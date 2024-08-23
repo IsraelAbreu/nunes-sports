@@ -1,24 +1,38 @@
 @extends('Layouts.main')
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <div class="container">
         <h1 class="text-center m-5">Meus Produtos</h1>
         <div class="tabela_produtos">
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Código Produto</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Preço</th>
+                    <th class="text-center" scope="col">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($produtos as $produto)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{$produto->codigo_produto}}</th>
+                    <td>{{$produto->nome_produto}}</td>
+                    <td>{{$produto->descricao_produto}}</td>
+                    <td>{{$produto->preco_produto}},00</td>
+                    <td>
+                        <div class="text-center">
+                            <a class="btn btn-primary" href="{{route('produtos.ver', $produto->id)}}">Ver</a>
+                            <button class="btn btn-danger">Excluir</button>
+                        </div>
+                    </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
         </div>

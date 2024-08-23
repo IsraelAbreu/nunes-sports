@@ -22,7 +22,7 @@
                   </li>
                 </ul>
                 <div class="d-flex" role="search">
-                    <a class="btn btn-success right" href="{{route('produtos.criar')}}">Cadastrar Produto</a>
+                    <a class="btn btn-success right" href="{{route('produtos.novo')}}">Cadastrar Produto</a>
                 </div>
               </div>
             </div>
