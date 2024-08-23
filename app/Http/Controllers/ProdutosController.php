@@ -46,7 +46,20 @@ class ProdutosController extends Controller
     
     }
 
-    
+    public function editarProduto(Request $request, $id){
+
+        $produto = Produtos::find($id);
+
+        if(isset($produto)){
+            $produto->update($request->all());
+
+            return redirect()->route('produtos.listar')->with('success', 'Produto atualizado com sucesso!');
+        } else {
+                return redirect()->back()->with('error', 'Ocorreu um erro ao atualizar o produto');
+         }
+    }
+
+
 
     public function deletaProduto($idProduto)
     {
@@ -54,7 +67,7 @@ class ProdutosController extends Controller
 
         if(isset($produto)){
             $produto->delete();
-            return redirect()->route('success', 'Produto deletado com sucesso!');
+            return redirect()->back()->with('success', 'Produto deletado com sucesso!');
         }
     }
 }

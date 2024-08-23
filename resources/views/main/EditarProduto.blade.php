@@ -10,15 +10,16 @@
 @endif
     <div class="container">
         <h1 class="text-center m-5">Editar Produto</h1>
-        <form>
+        <form action="{{route('produto.editar', $produto->id)}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="mb-3">
               <label for="nomeProduto" class="form-label">Nome do produto</label>
-              <input type="email" class="form-control" id="nomeProduto" name="nome_produto" value="{{$produto->nome_produto}}">
+              <input type="text" class="form-control" id="nomeProduto" name="nome_produto" value="{{$produto->nome_produto}}">
             </div>
             <div class="mb-3">
                 <label for="codigoProduto" class="form-label">Código do produto</label>
-                <input type="email" class="form-control" id="codigoProduto" name="codigo_produto" value="{{$produto->codigo_produto}}">
+                <input type="number" class="form-control" id="codigoProduto" name="codigo_produto" value="{{$produto->codigo_produto}}">
             </div>
             <div class="mb-3">
                 <label for="descricaoProduto" class="form-label">Descrição do produto</label>
@@ -28,7 +29,7 @@
                 <label for="precoProduto" class="form-label">Preço do produto</label>
                 <input type="number" class="form-control" id="precoProduto" name="preco_produto" value="{{$produto->preco_produto}}">
             </div>
-            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <button type="submit" class="btn btn-success">Atualizar</button>
           </form>
     </div>
 @endsection

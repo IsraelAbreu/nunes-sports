@@ -28,7 +28,11 @@
                     <td>
                         <div class="text-center">
                             <a class="btn btn-primary" href="{{route('produtos.ver', $produto->id)}}">Ver</a>
-                            <button class="btn btn-danger">Excluir</button>
+                            <form action="{{route('produtos.deletar', $produto->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
                         </div>
                     </td>
                   </tr>

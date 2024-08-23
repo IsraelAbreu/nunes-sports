@@ -19,5 +19,5 @@ Route::get('/', [ProdutosController::class, 'listarProdutos'])->name('produtos.l
 Route::get('/criar', [ProdutosController::class, 'novoProduto'])->name('produtos.novo');
 Route::post('/criar/produto', [ProdutosController::class, 'criarProduto'])->name('produtos.criar');
 Route::get('/editar/{id}', [ProdutosController::class, 'verProduto'])->name('produtos.ver');
-Route::post('/editar/produto', [ProdutosController::class, 'editarProduto'])->name('produto.editar');
-Route::destroy('/deletar/produto/{id}', [ProdutosController::class, 'deletaProduto'])->name('produtos.deletar');
+Route::put('/editar/produto/{id}', [ProdutosController::class, 'editarProduto'])->name('produto.editar');
+Route::delete('/deletar/produto/{id}', [ProdutosController::class, 'deletaProduto'])->name('produtos.deletar');
