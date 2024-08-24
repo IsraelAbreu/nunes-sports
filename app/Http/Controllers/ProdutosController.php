@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProdutoRequest;
 use App\Models\Produtos;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class ProdutosController extends Controller
         return view('main.CriarProduto');
     }
 
-    public function criarProduto(Request $request){
+    public function criarProduto(StoreProdutoRequest $request){
+
         if($request->all()){
             $produtoCriado = Produtos::create($request->all());
 
@@ -46,7 +48,7 @@ class ProdutosController extends Controller
     
     }
 
-    public function editarProduto(Request $request, $id){
+    public function editarProduto(StoreProdutoRequest $request, $id){
 
         $produto = Produtos::find($id);
 

@@ -1,17 +1,31 @@
 @extends('Layouts.main')
 @section('content')
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-success">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="container">
         <h1 class="text-center m-5">Cadastro de Produto</h1>
-        <form action="{{route('produtos.criar')}}" method="POST">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{ route('produtos.criar') }}" method="POST">
             @csrf
             <div class="mb-3">
-              <label for="nomeProduto" class="form-label">Nome do produto</label>
-              <input type="text" class="form-control" id="nomeProduto" name="nome_produto">
+                <label for="nomeProduto" class="form-label">Nome do produto</label>
+                <input type="text" class="form-control" id="nomeProduto" name="nome_produto">
             </div>
             <div class="mb-3">
                 <label for="codigoProduto" class="form-label">Código do produto</label>
@@ -26,6 +40,6 @@
                 <input type="number" class="form-control" id="precoProduto" name="preco_produto">
             </div>
             <button type="submit" class="btn btn-success">Cadastrar</button>
-          </form>
+        </form>
     </div>
 @endsection
