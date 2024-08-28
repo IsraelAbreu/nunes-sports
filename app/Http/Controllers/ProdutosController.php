@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditProdutoRequest;
 use App\Http\Requests\StoreProdutoRequest;
 use App\Models\Produtos;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class ProdutosController extends Controller
     
     }
 
-    public function editarProduto(StoreProdutoRequest $request, $id){
+    public function editarProduto(EditProdutoRequest $request, $id){
 
         $produto = Produtos::find($id);
 
